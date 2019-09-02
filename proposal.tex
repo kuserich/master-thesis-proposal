@@ -1,0 +1,76 @@
+\documentclass[english]{uzhpub}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+
+\begin{document}
+
+%% Titelei
+\title{DRAFT: Eager Machine Translation}
+
+\subtitle{Master Thesis Description}
+
+\author{Prof. Martin Volk, Ph.D.}
+
+\date{Date}
+
+\maketitle
+
+%% Addpart entspricht dem "Kapiteltitel"
+%\addpart{Chapter Title}
+
+\section{Introduction}
+
+Current Neural Machine Translation (NMT) models employ a so-called encoder-decoder architecture. That is, NMT models commonly include two distinct modules, an encoder and a decoder, such that the encoder translates the input sequence into a list of vectors and the decoder translates this list of vectors into the output sequence, one symbol at a time.
+
+The encoder and decoder modules typically are modelled as recurrent neural networks (RNNs), a special type of neural network that uses the output of the previous step in the following step to account for dependencies between tokens of the input sequence.
+Additionally, in a single step during inference, the decoder returns the top most likely tokens rather than only a single token and then selects the best sequence given this set of tokens from the previous step given again a set of tokens.
+This process is generally known as beam search.
+Furthermore, the decoder uses the output of the encoder and may thus only start once the encoder is entirely finished. This leads to an inherently sequential nature in the model architecture that causes training and inference to be computationally very expensive and time consuming. \cite{attentionisallyouneed,hochreiter1997long,chung2014empirical}
+
+A great body of research to improve the performance of recurrent language models and encoder-decoder architectures has since been conducted in the form of (add some references here, like factorization tricks, conditional computation and what not).
+Research with similar objectives include the application of attention mechanisms in addition to the encoder and decoder modules.
+
+Attention is lorem ipsum dolor sit amet Praesent ac lorem non dolor tempus consequat in id ipsum. Donec rutrum elit eleifend nibh porttitor, ut tempus nunc ultricies. In lobortis congue ex ac placerat. Integer tempus arcu nec tincidunt vulputate. Donec efficitur placerat ante ut rhoncus. Quisque et nisi ac massa volutpat commodo. Integer ornare, nunc ac pretium pretium, arcu libero eleifend sapien, ut laoreet leo neque id erat. These models are called transformer networks.
+
+
+In their most recent work, \cite{attentionisallyouneed} propose a novel model architecture that they call the Transformer, which 
+A very novel type of model architecture for neural machine translation was introduced by \cite{attentionisallyouneed}. In their work, \cite{attentionisallyouneed}  
+
+Transformer networks improve on recent state-of-the-art. Transformer network without any recurrent nature outperforms previous state-of-the-art. Highly parallelizable (in comparison) yet still computationally expensive.
+
+%Guys from Harvard different pre-processing approach, without attention entirely.
+
+%Still uses beam search, making training expensive.
+
+%Knowledge distillation known approach to simplify model. Nice benefit, models were shown to discard beam search, improving inference performance.
+
+%The most recent state-of-the-art models are so-called transformer models. Transformer models may still 
+
+\section{Proposed Approach}
+In their work, \cite{kim2016sequence} have demonstrated that applying knowledge distillation to a NMT model allows to generate a significantly simplified and thus much faster version of the original model with comparable accuracy.
+The simplified student network appears to perform with comparable accuracy even if beam search is omitted entirely during inference.
+
+We propose to apply knowledge distillation as described by \cite{hinton2015distilling} and \cite{kim2016sequence} to the NMT model that \cite{youmaynotneedattention} present and evaluate its effectiveness on the performance during inference and potential consequences on the accuracy of the model in the framework that \cite{youmaynotneedattention} used to evaluate their work.
+
+\section{Task Description}
+
+\subsection{First Group of Tasks}
+\subsection{Second Group of Tasks}
+\subsection{Evaluation}
+\subsection{Literature Review}
+
+\subsubsection{Sub-subtitle}
+
+
+\section{General Thesis Guideline}
+
+
+\section{Tutor}
+Mathias M\"uller
+
+\section{Signatures}
+Lorem ipsum
+
+\bibliographystyle{apalike}
+\bibliography{proposalbib}
+\end{document}
