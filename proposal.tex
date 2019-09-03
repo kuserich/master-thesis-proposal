@@ -22,35 +22,41 @@
 
 Current Neural Machine Translation (NMT) models employ a so-called encoder-decoder architecture. That is, NMT models commonly include two distinct modules, an encoder and a decoder, such that the encoder translates the input sequence into a list of vectors and the decoder translates this list of vectors into the output sequence, one symbol at a time.
 
-The encoder and decoder modules typically are modelled as recurrent neural networks (RNNs), a special type of neural network that uses the output of the previous step in the following step to account for dependencies between tokens of the input sequence.
-Additionally, in a single step during inference, the decoder returns the top most likely tokens rather than only a single token and then selects the best sequence given this set of tokens from the previous step given again a set of tokens.
+The encoder and decoder modules typically are modelled as recurrent neural networks (RNNs), a special type of neural network that uses the output of the previous step in the following step to provide the model with information about previous steps of the input sequence. The decoder module uses the output of the encoder and may thus only start once the encoder is finished.
+
+Additionally, in every step during inference, the decoder returns a set of the top most likely tokens rather than only a single token and subsequently selects the best sequence given this set of tokens from the previous step given again a set of tokens.
 This process is generally known as beam search.
-Furthermore, the decoder uses the output of the encoder and may thus only start once the encoder is entirely finished. This leads to an inherently sequential nature in the model architecture that causes training and inference to be computationally very expensive and time consuming. \cite{attentionisallyouneed,hochreiter1997long,chung2014empirical}
 
-A great body of research to improve the performance of recurrent language models and encoder-decoder architectures has since been conducted in the form of (add some references here, like factorization tricks, conditional computation and what not).
-Research with similar objectives include the application of attention mechanisms in addition to the encoder and decoder modules.
+This leads to an inherently sequential nature in the model architecture that causes training and inference to be computationally very expensive and time consuming. \cite{chung2014empirical,seq2seq.sutskever2014sequence,google.wu2016google,cho2014learning,jointly.bahdanau2014neural,effective.luong2015effective}
 
-Attention is lorem ipsum dolor sit amet Praesent ac lorem non dolor tempus consequat in id ipsum. Donec rutrum elit eleifend nibh porttitor, ut tempus nunc ultricies. In lobortis congue ex ac placerat. Integer tempus arcu nec tincidunt vulputate. Donec efficitur placerat ante ut rhoncus. Quisque et nisi ac massa volutpat commodo. Integer ornare, nunc ac pretium pretium, arcu libero eleifend sapien, ut laoreet leo neque id erat. These models are called transformer networks.
+A great body of research to improve the performance and accuracy of neural language models and encoder-decoder architectures has since been conducted in the form of (add some references here, like factorization tricks, conditional computation and what not).
+Research with similar objectives include the application of attention mechanisms in addition to the encoder and decoder modules \cite{jointly.bahdanau2014neural,effective.luong2015effective,attentionisallyouneed}.
 
+Attention circumvents the issue that traditional neural language models need to represent all relevant information of the source sentence in a single fixed-length vector. An attention mechanism computes a weighted sum of all encoder states in every decoder step and therewith effectively learns to translate and align jointly. These models were shown to be particularly effective on longer sequences \cite{jointly.bahdanau2014neural,effective.luong2015effective}.
 
-In their most recent work, \cite{attentionisallyouneed} propose a novel model architecture that they call the Transformer, which 
-A very novel type of model architecture for neural machine translation was introduced by \cite{attentionisallyouneed}. In their work, \cite{attentionisallyouneed}  
+In their most recent work, \cite{attentionisallyouneed} propose a novel architecture that they call the Transformer which is based entirely on attention mechanisms. Their model employs the traditional encoder-decoder architecture but does not use any recurrent networks.
 
-Transformer networks improve on recent state-of-the-art. Transformer network without any recurrent nature outperforms previous state-of-the-art. Highly parallelizable (in comparison) yet still computationally expensive.
+A big drawback of the transformer architecture is that computing attention is particularly expensive during inference. TODO: elaborate on drawbacks and thus motivation for alternative approaches (You may not need Attention).
 
-%Guys from Harvard different pre-processing approach, without attention entirely.
+\cite{youmaynotneedattention} propose a model that combines the traditional encoder and decoder steps and eagerly returns a translation after every token of the input sequence. Particularly, \cite{youmaynotneedattention} investigate the potential of neural machine translation models that do not use attention mechanisms.
+Instead, they propose a special pre-processing step that aligns dependencies in the input and target sequences by adding a special $\varepsilon$-token. TODO: elaborate on eager and show example
 
-%Still uses beam search, making training expensive.
+That is, in cases in which the translation of a given token of the input sequence follows subsequently in the output sequence, the model learns to return the $\varepsilon$-token and thus delay further translation for another time step. The $\varepsilon$-token can be considered a way for the model to express that it requires more information before making a conclusive decision. That is, the $\varepsilon$-token, effectively, can be considered a \textit{wait}-token.
 
-%Knowledge distillation known approach to simplify model. Nice benefit, models were shown to discard beam search, improving inference performance.
+\cite{youmaynotneedattention} quantitatively show that their model performs on par with traditional models as introduced by \cite{jointly.bahdanau2014neural}. However, they do not qualitatively or empirically assess the behavior of their model with regards to the $\varepsilon$-tokens. They report that during their experiments translation quality improved if they padded the input sentence with $\varepsilon$-tokens just before the EOS-token but do not elaborate on this further. It may thus be that the $\varepsilon$-token is not helping the model to learn to wait in the case of non-monotonic translations but enables the model to exploit the increased sentence length by simply waiting initially and acquiring multiple tokens of the source sentence before starting to or proceeding to eagerly return translations.
 
-%The most recent state-of-the-art models are so-called transformer models. Transformer models may still 
+TODO: show examples of exploit and without exploit
+
+In the context of waiting and pondering, \cite{act.graves2016adaptive} have introduced an approach that allows recurrent neural networks to learn the number of steps to take between receiving an input and returning an output. TODO: elaborate: XYZ have shown that increased depth leads to more performant networks. On the other hand, deeper networks require more resources during training and inference and more prone to overfit.
+
+\cite{act.graves2016adaptive} extend the traditional architecture with a state transition model that allows the network to perform a variable number of computation steps for every input it receives. The model learns the number of steps to perform for a given input and therewith learns for which input tokens it requires a deeper computation, it learns for which tokens to wait and ponder, so to speak.
 
 \section{Proposed Approach}
-In their work, \cite{kim2016sequence} have demonstrated that applying knowledge distillation to a NMT model allows to generate a significantly simplified and thus much faster version of the original model with comparable accuracy.
-The simplified student network appears to perform with comparable accuracy even if beam search is omitted entirely during inference.
+We propose to qualitatively assess the effect of adding $\varepsilon$-tokens in the eager translation model that \cite{youmaynotneedattention} introduce. Particularly, we investigate if the model learns to wait in cases of non-monotonic translations or if the model simply exploits the increased sequence length. For this we design and construct an artificial task in which we displace dependent tokens by a suitable margin and then evaluate the performance of the model on these examples.
+Finding and constructing this task will be part of our research.
 
-We propose to apply knowledge distillation as described by \cite{hinton2015distilling} and \cite{kim2016sequence} to the NMT model that \cite{youmaynotneedattention} present and evaluate its effectiveness on the performance during inference and potential consequences on the accuracy of the model in the framework that \cite{youmaynotneedattention} used to evaluate their work.
+We further propose to reconstruct (TODO: find better verb) the model as outlined by \cite{youmaynotneedattention} and use it as the baseline for our experiments. We then want to extend the model that \cite{youmaynotneedattention} propose with Adaptive Computation Time as introduced by \cite{act.graves2016adaptive} and compare the behavior of the two approaches qualitatively. That is, for more complex parts of sequences, we expect a model with ACT to perform a larger number of computation steps than for simpler tokens and argue that 
+
 
 \section{Task Description}
 
