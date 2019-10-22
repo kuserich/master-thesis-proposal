@@ -18,6 +18,106 @@
   pages={3104--3112},
   year={2014}
 }
+
+@inproceedings{ott2018analyzing,
+  author    = {Ott, Myle and Auli, Michael and Grangier, David and Ranzato, Marc'Aurelio},
+  title     = {Analyzing Uncertainty in Neural Machine Translation},
+  booktitle = {International Conference on Machine Learning},
+  year      = 2018,
+}
+
+@inproceedings{vyas-etal-2018-identifying,
+    title = "Identifying Semantic Divergences in Parallel Text without Annotations",
+    author = "Vyas, Yogarshi  and
+      Niu, Xing  and
+      Carpuat, Marine",
+    booktitle = "Proceedings of the 2018 Conference of the North {A}merican Chapter of the Association for Computational Linguistics: Human Language Technologies, Volume 1 (Long Papers)",
+    month = jun,
+    year = "2018",
+    address = "New Orleans, Louisiana",
+    publisher = "Association for Computational Linguistics",
+    url = "https://www.aclweb.org/anthology/N18-1136",
+    doi = "10.18653/v1/N18-1136",
+    pages = "1503--1515",
+    abstract = "Recognizing that even correct translations are not always semantically equivalent, we automatically detect meaning divergences in parallel sentence pairs with a deep neural model of bilingual semantic similarity which can be trained for any parallel corpus without any manual annotation. We show that our semantic model detects divergences more accurately than models based on surface features derived from word alignments, and that these divergences matter for neural machine translation.",
+}
+
+@article{freitag2017ensemble,
+  title={Ensemble distillation for neural machine translation},
+  author={Freitag, Markus and Al-Onaizan, Yaser and Sankaran, Baskaran},
+  journal={arXiv preprint arXiv:1702.01802},
+  year={2017}
+}
+
+@inproceedings{devlin-etal-2019-bert,
+    title = "{BERT}: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+    author = "Devlin, Jacob  and
+      Chang, Ming-Wei  and
+      Lee, Kenton  and
+      Toutanova, Kristina",
+    booktitle = "Proceedings of the 2019 Conference of the North {A}merican Chapter of the Association for Computational Linguistics: Human Language Technologies, Volume 1 (Long and Short Papers)",
+    month = jun,
+    year = "2019",
+    address = "Minneapolis, Minnesota",
+    publisher = "Association for Computational Linguistics",
+    url = "https://www.aclweb.org/anthology/N19-1423",
+    doi = "10.18653/v1/N19-1423",
+    pages = "4171--4186",
+    abstract = "We introduce a new language representation model called BERT, which stands for Bidirectional Encoder Representations from Transformers. Unlike recent language representation models (Peters et al., 2018a; Radford et al., 2018), BERT is designed to pre-train deep bidirectional representations from unlabeled text by jointly conditioning on both left and right context in all layers. As a result, the pre-trained BERT model can be fine-tuned with just one additional output layer to create state-of-the-art models for a wide range of tasks, such as question answering and language inference, without substantial task-specific architecture modifications. BERT is conceptually simple and empirically powerful. It obtains new state-of-the-art results on eleven natural language processing tasks, including pushing the GLUE score to 80.5 (7.7 point absolute improvement), MultiNLI accuracy to 86.7{\%} (4.6{\%} absolute improvement), SQuAD v1.1 question answering Test F1 to 93.2 (1.5 point absolute improvement) and SQuAD v2.0 Test F1 to 83.1 (5.1 point absolute improvement).",
+}
+
+@inproceedings{kreutzer2018c,
+  author = {Kreutzer, Julia and Sokolov, Artem},
+  title = {Learning to Segment Inputs for NMT Favors Character-Level Processing},
+  journal = {Proceedings of the International Workshop on Spoken Language Translation},
+  journal-abbrev = {IWSLT},
+  year = {2018},
+  city = {Bruges},
+  country = {Belgium},
+  url = {https://arxiv.org/abs/1810.01480}
+}
+
+@inproceedings{ma-etal-2019-stacl,
+    title = "{STACL}: Simultaneous Translation with Implicit Anticipation and Controllable Latency using Prefix-to-Prefix Framework",
+    author = "Ma, Mingbo  and
+      Huang, Liang  and
+      Xiong, Hao  and
+      Zheng, Renjie  and
+      Liu, Kaibo  and
+      Zheng, Baigong  and
+      Zhang, Chuanqiang  and
+      He, Zhongjun  and
+      Liu, Hairong  and
+      Li, Xing  and
+      Wu, Hua  and
+      Wang, Haifeng",
+    booktitle = "Proceedings of the 57th Annual Meeting of the Association for Computational Linguistics",
+    month = jul,
+    year = "2019",
+    address = "Florence, Italy",
+    publisher = "Association for Computational Linguistics",
+    url = "https://www.aclweb.org/anthology/P19-1289",
+    pages = "3025--3036",
+    abstract = "Simultaneous translation, which translates sentences before they are finished, is use- ful in many scenarios but is notoriously dif- ficult due to word-order differences. While the conventional seq-to-seq framework is only suitable for full-sentence translation, we pro- pose a novel prefix-to-prefix framework for si- multaneous translation that implicitly learns to anticipate in a single translation model. Within this framework, we present a very sim- ple yet surprisingly effective {``}wait-k{''} policy trained to generate the target sentence concur- rently with the source sentence, but always k words behind. Experiments show our strat- egy achieves low latency and reasonable qual- ity (compared to full-sentence translation) on 4 directions: zhâ†”en and deâ†”en.",
+}
+
+@InProceedings{pmlr-v70-gehring17a,
+  title = 	 {Convolutional Sequence to Sequence Learning},
+  author = 	 {Jonas Gehring and Michael Auli and David Grangier and Denis Yarats and Yann N. Dauphin},
+  booktitle = 	 {Proceedings of the 34th International Conference on Machine Learning},
+  pages = 	 {1243--1252},
+  year = 	 {2017},
+  editor = 	 {Doina Precup and Yee Whye Teh},
+  volume = 	 {70},
+  series = 	 {Proceedings of Machine Learning Research},
+  address = 	 {International Convention Centre, Sydney, Australia},
+  month = 	 {06--11 Aug},
+  publisher = 	 {PMLR},
+  pdf = 	 {http://proceedings.mlr.press/v70/gehring17a/gehring17a.pdf},
+  url = 	 {http://proceedings.mlr.press/v70/gehring17a.html},
+  abstract = 	 {The prevalent approach to sequence to sequence learning maps an input sequence to a variable length output sequence via recurrent neural networks. We introduce an architecture based entirely on convolutional neural networks. Compared to recurrent models, computations over all elements can be fully parallelized during training to better exploit the GPU hardware and optimization is easier since the number of non-linearities is fixed and independent of the input length. Our use of gated linear units eases gradient propagation and we equip each decoder layer with a separate attention module. We outperform the accuracy of the deep LSTM setup of Wu et al. (2016) on both WMT’14 English-German and WMT’14 English-French translation at an order of magnitude faster speed, both on GPU and CPU.}
+}
+
 @article{google.wu2016google,
   title={Google's neural machine translation system: Bridging the gap between human and machine translation},
   author={Wu, Yonghui and Schuster, Mike and Chen, Zhifeng and Le, Quoc V and Norouzi, Mohammad and Macherey, Wolfgang and Krikun, Maxim and Cao, Yuan and Gao, Qin and Macherey, Klaus and others},
@@ -75,4 +175,18 @@
   author={Kim, Yoon and Rush, Alexander M},
   journal={arXiv preprint arXiv:1606.07947},
   year={2016}
+}
+
+@article{radford2019language,
+  title={Language Models are Unsupervised Multitask Learners},
+  author={Radford, Alec and Wu, Jeff and Child, Rewon and Luan, David and Amodei, Dario and Sutskever, Ilya},
+  year={2019}
+}
+
+@inproceedings{gu2017non,
+title={Non-Autoregressive Neural Machine Translation},
+author={Jiatao Gu and James Bradbury and Caiming Xiong and Victor O.K. Li and Richard Socher},
+booktitle={International Conference on Learning Representations},
+year={2018},
+url={https://openreview.net/forum?id=B1l8BtlCb},
 }

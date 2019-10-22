@@ -1,6 +1,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% uzhpub.cls
-%% Copyright 2010 Jürgen Spitzmüller <spitzmueller@ds.uzh.ch>
+%% Copyright 2010 JÃ¼rgen SpitzmÃ¼ller <spitzmueller@ds.uzh.ch>
 %
 % This work may be distributed and/or modified under the
 % conditions of the LaTeX Project Public License, either version 1.3
@@ -12,7 +12,7 @@
 %
 % This work has the LPPL maintenance status "maintained".
 % 
-% The Current Maintainer of this work is Jürgen Spitzmüller.
+% The Current Maintainer of this work is JÃ¼rgen SpitzmÃ¼ller.
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
